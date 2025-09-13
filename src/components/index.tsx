@@ -1,5 +1,16 @@
 import NavbarComponent from "./NavbarComponent";
 import FooterComponent from "./FooterComponent";
 import DarkModeToggleComponent from "./DarkModeToggleComponent";
-
-export { NavbarComponent, FooterComponent, DarkModeToggleComponent };
+import HeroSection from "./HeroSection";
+import PainPoint from "./PainPoint";
+import SolutionSection from "./SolutionSection";
+import PricingSection from "./PricingSection";
+export {
+  NavbarComponent,
+  FooterComponent,
+  DarkModeToggleComponent,
+  HeroSection,
+  PainPoint,
+  SolutionSection,
+  PricingSection,
+};
