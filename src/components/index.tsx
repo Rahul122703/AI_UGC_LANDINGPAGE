@@ -5,6 +5,9 @@ import HeroSection from "./HeroSection";
 import PainPoint from "./PainPoint";
 import SolutionSection from "./SolutionSection";
 import PricingSection from "./PricingSection";
+import OnboardingSection from "./OnboardingSection";
+import WhyChooseUs from "./WhyChooseUs";
+import FinalCTA from "./FinalCTA";
 export {
   NavbarComponent,
   FooterComponent,
@@ -13,4 +16,7 @@ export {
   PainPoint,
   SolutionSection,
   PricingSection,
+  OnboardingSection,
+  WhyChooseUs,
+  FinalCTA,
 };

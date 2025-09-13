@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
-import { HomePage, AboutPage } from "./pages";
-import { NavbarComponent, FooterComponent } from "./components";
+import { HomePage } from "./pages";
+import { NavbarComponent } from "./components";
 
 interface UIState {
   ui: {
@@ -33,12 +33,8 @@ function App() {
         <main className="flex-1 flex flex-col">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
           </Routes>
         </main>
-
-        {/* Footer at the bottom */}
-        <FooterComponent />
       </div>
     </Router>
   );

@@ -1,52 +1,68 @@
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const HeroSection = () => {
+export default function Hero() {
+  const platforms = ["Instagram Reels", "YouTube Shorts", "Ads"];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % platforms.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white px-6 sm:px-12 ">
-      <div className="max-w-5xl mx-auto text-center flex flex-col items-center">
-        {/* Animated headline */}
+    <section
+      id="hero"
+      aria-labelledby="hero-heading"
+      className="relative flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 text-center border border-none">
         <motion.h1
-          initial={{ opacity: 0, y: -30 }}
+          id="hero-heading"
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-          Scale Your{" "}
-          <span className="text-blue-600 dark:text-blue-400">
-            Shopify Brand
-          </span>{" "}
-          with AI-Powered UGC
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 leading-tight">
+          Scale Your Shopify Brand with <br className="hidden md:block" />
+          <span className="text-blue-600 dark:text-purple-400">
+            AI-Powered UGC
+          </span>
         </motion.h1>
 
-        {/* Subheadline */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-6 text-lg sm:text-xl lg:text-2xl max-w-3xl text-gray-700 dark:text-gray-300">
-          Affordable, high-converting videos & captions designed for{" "}
-          <span className="font-semibold">Instagram Reels</span>,{" "}
-          <span className="font-semibold">YouTube Shorts</span>, and Ads.
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mt-6 text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 dark:text-gray-300 max-w-[50rem] 3xl mx-auto flex justify-center items-center gap-2  border border-none">
+          Affordable, high-converting videos & captions designed for
+          <span className="relative h-10 w-56 sm:w-64 md:w-72 lg:w-80 overflow-hidden inline-block border border-none">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentIndex}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -30, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute left-0 top-0 text-blue-600 dark:text-purple-400 font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl whitespace-nowrap border border-none">
+                {platforms[currentIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </span>
         </motion.p>
 
-        {/* CTA Button */}
         <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-8">
-          <Link
-            to="/trial"
-            className="px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white text-lg sm:text-xl rounded-xl shadow-lg hover:bg-blue-700 transition">
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mt-10 flex justify-center">
+          <a
+            href="#pricing"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-blue-600 dark:bg-purple-600 text-white font-semibold text-lg sm:text-xl md:text-2xl shadow-md hover:shadow-lg hover:scale-105 transition-transform">
             Start Your Trial for Just ₹4,000
-          </Link>
+          </a>
         </motion.div>
       </div>
-
-      {/* Background gradient effect */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-800 dark:to-gray-900"></div>
     </section>
   );
-};
-
-export default HeroSection;
+}

@@ -18,8 +18,8 @@ export default defineConfig({
       },
 
       manifest: {
-        name: "react-tailwind-redux-starter",
-        short_name: "react-redux-starter",
+        name: "AI UGC",
+        short_name: "AI UGC",
         description: "No no need to setup Tailwind, Redux, and PWA",
         theme_color: "#ffffff",
       },
